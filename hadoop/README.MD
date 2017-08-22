@@ -12,4 +12,4 @@
 
 - Start hadoop docker container
  
-        docker run -it --name dojo-hadoop -p 8088:8088 -p 50070:50070 -p 8042:8042 cit/dojo-hadoop bash
+        docker run -it --name dojo-hadoop -p 8088:8088 -p 50070:50070 -p 8042:8042 -p 19888:19888 cit/dojo-hadoop bash

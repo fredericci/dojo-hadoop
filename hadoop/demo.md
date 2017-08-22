@@ -36,6 +36,13 @@
 
         hdfs dfs -rm -r -f /output
 
+- Running homemade mapreduce
+
+         hadoop jar /root/hadoop.mapreduce-0.0.1.jar com.ciandt.dojo.hadoop.Main /input /output
+
+         hadoop job -list
+         hadoop job -kill <jobId>
+
 - Some links
 
         http://localhost:50070
