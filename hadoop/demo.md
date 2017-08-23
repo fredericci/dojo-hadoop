@@ -45,6 +45,8 @@
 
 - Some links
 
+        sudo sed -i '$ a 127.0.0.1 06ba3d2b13ee' /etc/hosts
+
         http://localhost:50070
 
         http://localhost:8088
