@@ -1,0 +1,11 @@
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# Maven 
+target/
+
+# Binaries
+*.jar
+*.class
