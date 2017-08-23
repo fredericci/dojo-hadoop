@@ -13,7 +13,7 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 public class Main implements Tool {
-
+	
 	public static void main(String[] args) throws Exception {
 
 		int res = ToolRunner.run(new Configuration(), new Main(), args);
@@ -64,12 +64,11 @@ public class Main implements Tool {
 	}
 	
 	public void setConf(Configuration conf) {
-		// TODO Auto-generated method stub
-
+		//TODO
 	}
 
 	public Configuration getConf() {
-		// TODO Auto-generated method stub
+		//TODO
 		return null;
 	}
 
