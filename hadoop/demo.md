@@ -29,23 +29,28 @@
 
 - Running a mapreduce example
 
-        wget https://www.w3.org/TR/PNG/iso_8859-1.txt
-        hdfs dfs -put iso_8859-1.txt /
+        hdfs dfs -put $HADOOP_INSTALL/etc/ /
 
-        hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.4.jar  wordcount /iso_8859-1.txt /output
+        hadoop jar $HADOOP_INSTALL/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.4.jar wordcount /etc/hadoop /output/wordcount
 
-        hdfs dfs -rm -r -f /output
+        hdfs dfs -ls /output/wordcount
+        hdfs dfs -cat /output/wordcount/part-r-00000
+
+        hdfs dfs -rm -r -f /output/wordcount
 
 - Running homemade mapreduce
 
-         hadoop jar /root/hadoop.mapreduce-0.0.1.jar com.ciandt.dojo.hadoop.Main /input /output
+        hadoop jar /root/hadoop.mapreduce-0.0.1.jar com.ciandt.dojo.hadoop.Main /etc/hadoop /output/mywordcount
+        
+        hdfs dfs -ls /output/wordcount
+        hdfs dfs -cat /output/wordcount/part-r-00000
 
          hadoop job -list
          hadoop job -kill <jobId>
 
 - Some links
 
-        sudo sed -i '$ a 127.0.0.1 06ba3d2b13ee' /etc/hosts
+        sudo sed -i '$ a 127.0.0.1 <docker_container>' /etc/hosts
 
         http://localhost:50070
 
