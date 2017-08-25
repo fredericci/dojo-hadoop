@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 '''
 Created on 24 de ago de 2017
 
@@ -12,14 +13,16 @@ Created on 24 de ago de 2017
  Cluster 2 <-- Iris-virginica
  
 '''
-#!/usr/bin/python
+
 import sys
 import math
 
 dimensions = 4
-centroids = [  [ 6.1, 2.9, 4.7, 1.4 ] 
-             , [ 6.2, 2.9, 4.3, 1.3 ]
-             , [ 6.9, 3.1, 5.1, 2.3 ]]
+centroids = [
+    [6.1,2.9,4.7,1.4],
+    [6.2,2.9,4.3,1.3],
+    [6.9,3.1,5.1,2.3]
+]
 
 for line in sys.stdin:
     
@@ -30,11 +33,13 @@ for line in sys.stdin:
     
         distances = [0, 0, 0]
         
-        for i in list(range(3)):
-            distances[i] = math.sqrt((math.pow(float(point[0]) - centroids[i][0], 2))
-                                   + (math.pow(float(point[1]) - centroids[i][1], 2))
-                                   + (math.pow(float(point[2]) - centroids[i][2], 2))
-                                   + (math.pow(float(point[3]) - centroids[i][3], 2)))
+        for i in range(3):
+            distances[i] = math.sqrt(
+                (math.pow(float(point[0]) - centroids[i][0], 2)) +
+                (math.pow(float(point[1]) - centroids[i][1], 2)) +
+                (math.pow(float(point[2]) - centroids[i][2], 2)) +
+                (math.pow(float(point[3]) - centroids[i][3], 2))
+            )
         
         classification = ""
         if (distances[0] < distances[1] and distances[0] < distances[2]):
@@ -45,6 +50,11 @@ for line in sys.stdin:
             classification = "Iris-virginica"
                     
         
-        print '%s\t%s' % (point[4], classification)
+        print(
+            '{point}\t{classification}'.format(
+                point=point[4],
+                classification=classification,
+            )
+        )
         
         

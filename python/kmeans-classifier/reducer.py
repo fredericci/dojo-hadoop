@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 '''
 Created on 24 de ago de 2017
 
@@ -8,7 +9,7 @@ Created on 24 de ago de 2017
  Cluster 2 <-- Iris-virginica
  
 '''
-#!/usr/bin/python
+
 import sys
 
 result = {}
