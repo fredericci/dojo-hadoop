@@ -3,7 +3,7 @@ Created on 23 de ago de 2017
 
 @author: ulysses
 '''
-#!/usr/bin/env python
+#!/usr/bin/python
 import sys
  
 # maps words to their counts

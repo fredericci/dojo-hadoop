@@ -2,15 +2,6 @@
 
 ## Steps
 
-- Setting up ssh
-
-        cd ~
-        ssh-keygen -t rsa -P ''
-        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-        service ssh restart
-        ssh localhost
-        exit
-
 - Starting servers
 
         cd /
