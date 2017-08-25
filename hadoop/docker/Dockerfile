@@ -25,14 +25,14 @@ RUN sed -i 's/JAVA_HOME=${JAVA_HOME}/JAVA_HOME=\/usr\/lib\/jvm\/java-8-openjdk-a
 RUN mkdir -p /hdfs-volume/namenode
 RUN mkdir -p /hdfs-volume/datanode
 
-COPY entrypoint.sh /
+COPY entry-hadoop.sh /
 COPY conf/core-site.xml /usr/local/hadoop/etc/hadoop/
 COPY conf/hdfs-site.xml /usr/local/hadoop/etc/hadoop/
 COPY conf/yarn-site.xml /usr/local/hadoop/etc/hadoop/
 COPY conf/mapred-site.xml /usr/local/hadoop/etc/hadoop/
 
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entry-hadoop.sh
 
 EXPOSE 8020 8042 8088 9000 10020 19888 50010 50020 50070 50075 50090
 
-CMD "/entrypoint.sh"
+CMD "/entry-hadoop.sh"

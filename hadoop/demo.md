@@ -5,7 +5,17 @@
 - Starting servers
 
         cd /
-        ./entrypoint.sh
+        ./entry-hadoop.sh
+        ./usr/local/hadoop/sbin/start-dfs.sh 
+        jps
+
+        Expected:
+        Jps
+        SecondaryNameNode
+        ResourceManager
+        DataNode
+        NameNode
+
 
 - Dummy things
 
