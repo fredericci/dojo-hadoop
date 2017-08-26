@@ -20,4 +20,4 @@
 
   - Hadoop + Hive Container
 
-        docker run -it --name dojo-hive -p 8088:8088 -p 50070:50070 -p 8042:8042 -p 19888:19888 -p 10002:10002 -p 10001:10001 -p 10000:10000 cit/dojo-hive bash
+        docker run -it --name dojo-hive -p 8088:8088 -p 50070:50070 -p 50075:50075 -p 8042:8042 -p 19888:19888 -p 10002:10002 -p 10001:10001 -p 10000:10000 cit/dojo-hive bash

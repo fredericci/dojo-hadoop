@@ -21,7 +21,6 @@ COPY conf/hive-env.sh /usr/local/hive/conf/
 COPY conf/hive-site.xml /usr/local/hive/conf/
 COPY conf/hive-log4j2.properties /usr/local/hive/conf/
 COPY conf/jpox.properties /usr/local/hive/conf/
-COPY conf/java.policy/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/
 
 RUN chmod +x /entry-hive.sh
 
