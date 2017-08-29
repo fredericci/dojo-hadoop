@@ -6,7 +6,7 @@ Created on 23 de ago de 2017
 '''
 
 import sys
- 
+
 # maps words to their counts
 word2count = {}
  
@@ -14,7 +14,7 @@ word2count = {}
 for line in sys.stdin:
     # remove leading and trailing whitespace
     line = line.strip()
- 
+
     # parse the input we got from mapper.py
     word, count = line.split('\t', 1)
     # convert count (currently a string) to int
