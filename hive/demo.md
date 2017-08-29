@@ -38,15 +38,27 @@
 
         CREATE DATABASE stage;
 
-        CREATE TABLE stage.stock_fb (Day date, Open decimal(12,6), High decimal(12,6), Low decimal(12,6), Close decimal(12,6), AdjClose decimal(12,6), Volume int ) row format delimited fields terminated by ',' stored as textfile;
+        CREATE TABLE stage.stock_fb (Day date, Open decimal(12,6), High decimal(12,6), Low decimal(12,6), Close decimal(12,6), AdjClose decimal(12,6), Volume int ) 
+        row format delimited fields terminated by ',' 
+        stored as textfile;
 
         LOAD DATA INPATH '/csv/FB.csv' OVERWRITE INTO TABLE stage.Stok_FB;
 
-        CREATE TABLE stage.stock_goog (Day date, Open decimal(12,6), High decimal(12,6), Low decimal(12,6), Close decimal(12,6), AdjClose decimal(12,6), Volume int ) row format delimited fields terminated by ',' stored as textfile;
+        CREATE TABLE stage.stock_goog (Day date, Open decimal(12,6), High decimal(12,6), Low decimal(12,6), Close decimal(12,6), AdjClose decimal(12,6), Volume int ) 
+        row format delimited fields terminated by ',' 
+        stored as textfile;
 
         LOAD DATA LOCAL INPATH '/root/GOOG.csv' OVERWRITE INTO TABLE stage.Stok_GOOG;
 
-        select * from stage.stok_fb f, stage.stok_goog g where g.day=f.day;
+        select * 
+          from stage.stock_fb f
+             , stage.stock_goog g 
+         where g.day=f.day;
+
+        CREATE TABLE stage.stock_msft (Day date, Open decimal(12,6), High decimal(12,6), Low decimal(12,6), Close decimal(12,6), AdjClose decimal(12,6), Volume int ) 
+        row format delimited fields terminated by ',' 
+        stored as textfile
+        location '/data/MSFT.csv';
 
 - Partition   
 
@@ -67,11 +79,47 @@
         select *, 'FB' as company from stage.stock_fb where open is not null
         ;   
 
+- View 
+
+    create view stage.view_stock
+    select *, 'GOOG' as company 
+      from stage.stock_goog 
+     where open is not null
+    union
+    select *, 'FB' as company 
+     from stage.stock_fb 
+     where open is not null    
+    ;
+
+- Dinamic Data Types
+
+    create table mobilephones 
+        (
+            id string,
+            title string,
+            cost float,
+            colors array<string>,
+            screen_size array<float>
+    );
+
+    insert into table mobilephones
+    select "redminote7", "Redmi Note 7", 300, 
+    array("white", "silver", "black"), array(float(4.5))
+    
+    UNION ALL
+    
+    select "motoGplus", "Moto G Plus", 200, array("black", "gold"), 
+    array(float(4.5), float(5.5))
+    ;
+
 - Running wordcount script
 
         hive -f wordcount.sql --hivevar file=/root/index.html
 
+        beeline -u jdbc:hive2:// -f wordcount.sql --hivevar file="/root/index.html"
 
 - Connecting via beeline
 
-    beeline -u jdbc:hive2://localhost:10000
+        beeline -u jdbc:hive2://
+
+        
