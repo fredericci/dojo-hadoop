@@ -42,13 +42,13 @@
         row format delimited fields terminated by ',' 
         stored as textfile;
 
-        LOAD DATA INPATH '/csv/FB.csv' OVERWRITE INTO TABLE stage.Stok_FB;
+        LOAD DATA INPATH '/csv/FB.csv' OVERWRITE INTO TABLE stage.stock_fb;
 
         CREATE TABLE stage.stock_goog (Day date, Open decimal(12,6), High decimal(12,6), Low decimal(12,6), Close decimal(12,6), AdjClose decimal(12,6), Volume int ) 
         row format delimited fields terminated by ',' 
         stored as textfile;
 
-        LOAD DATA LOCAL INPATH '/root/GOOG.csv' OVERWRITE INTO TABLE stage.Stok_GOOG;
+        LOAD DATA LOCAL INPATH '/root/GOOG.csv' OVERWRITE INTO TABLE stage.stock_goog;
 
         select * 
           from stage.stock_fb f
@@ -81,7 +81,7 @@
 
 - View 
 
-    create view stage.view_stock
+    create view stage.view_stock AS
     select *, 'GOOG' as company 
       from stage.stock_goog 
      where open is not null
@@ -116,7 +116,7 @@
 
         hive -f wordcount.sql --hivevar file=/root/index.html
 
-        beeline -u jdbc:hive2:// -f wordcount.sql --hivevar file="/root/index.html"
+        beeline -u jdbc:hive2:// -f wordcount.sql --hivevar file=/root/index.html
 
 - Connecting via beeline
 
