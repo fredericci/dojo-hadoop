@@ -58,7 +58,7 @@
         CREATE TABLE stage.stock_msft (Day date, Open decimal(12,6), High decimal(12,6), Low decimal(12,6), Close decimal(12,6), AdjClose decimal(12,6), Volume int ) 
         row format delimited fields terminated by ',' 
         stored as textfile
-        location '/data/MSFT.csv';
+        location '/root/MSFT.csv';
 
 - Partition   
 
@@ -78,7 +78,8 @@
         union
         select *, 'FB' as company from stage.stock_fb where open is not null
         ;   
-
+--hiveconf hive.mapred.mode=nonstrict
+5.100000        3.500000        1.400000        0.200000        3.345146        Iris-setosa
 - View 
 
     create view stage.view_stock AS
